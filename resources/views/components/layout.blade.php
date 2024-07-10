@@ -4,11 +4,21 @@
       <p>Logo</p>
       {{-- <img src="{{ asset('asset/logo.svg') }}" alt=""> --}}
     </div>
-    <div class="flex space-x-4">
-      <a href="/sign-up"><button class="rounded-3xl px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">About me</button></a>
-      <a href="/sign-in"><button class="rounded-3xl px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">Sign in</button></a>
-      <a href="/sign-up"><button class="rounded-3xl px-4 sm:px-8 lg:px-12 py-3 font-bold text-light bg-customgradient3">Sign up</button></a>
-    </div>
+    <div class="relative">
+      <div class="hidden md:flex">
+        <a href="/sign-up"><button class="rounded-3xl px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">About me</button></a>
+        <a href="/sign-in"><button class="rounded-3xl px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">Sign in</button></a>
+        <a href="/sign-up"><button class="rounded-3xl px-4 sm:px-8 lg:px-12 py-3 font-bold text-light bg-customgradient3">Sign up</button></a>
+      </div>
+      <div class="flex md:hidden md:space-x-4">
+        <button id="bars-icon" class="fas fa-solid fa-bars text-2xl text-purple"></button>          
+        <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg">
+          <a href="/sign-up"><button class="flex rounded-lg py-2 w-full justify-center bg-light font-bold text-purple hover:text-white hover:bg-purple">About me</button></a>
+          <a href="/sign-in"><button class="flex rounded-lg py-2 w-full justify-center bg-light font-bold text-purple hover:text-white hover:bg-purple">Sign in</button></a>
+          <a href="/sign-up"><button class="flex rounded-lg py-2 w-full justify-center bg-purple font-bold text-white ">Sign up</button></a>
+        </div>
+      </div>
+    </div>    
   </div>
 
   <div class="relative rounded-3xl bg-customgradient2 sm:pt-5">
@@ -72,6 +82,19 @@
     
     
 <script>
+  document.getElementById('bars-icon').addEventListener('click', function(event) {
+      event.stopPropagation();
+      var dropdown = document.getElementById('dropdown-menu');
+      dropdown.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', function(event) {
+      var dropdown = document.getElementById('dropdown-menu');
+      if (!dropdown.classList.contains('hidden') && !event.target.closest('#dropdown-menu')) {
+          dropdown.classList.add('hidden');
+      }
+  });
+
   window.addEventListener('scroll', function() {
       const header = document.querySelector('.header');
       if (window.scrollY > 0) {
