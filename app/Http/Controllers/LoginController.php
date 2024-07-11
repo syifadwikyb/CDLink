@@ -118,7 +118,6 @@ class LoginController extends Controller
 
         if (Hash::check($oldpassword, $user->password)) {
             $user->password = bcrypt($newpassword);
-
             try {
                 $user->save();
                 return redirect()->route('changepass')->with('success', 'Selamat anda berhasil ubah password');

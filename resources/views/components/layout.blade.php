@@ -6,16 +6,16 @@
     </div>
     <div class="relative">
       <div class="hidden md:flex">
-        <a href="/sign-up"><button class="rounded-3xl px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">About me</button></a>
-        <a href="/sign-in"><button class="rounded-3xl px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">Sign in</button></a>
-        <a href="/sign-up"><button class="rounded-3xl px-4 sm:px-8 lg:px-12 py-3 font-bold text-light bg-customgradient3">Sign up</button></a>
+        <a href="/sign-up"><button class="rounded-3xl ml-2 px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">About me</button></a>
+        <a href="/sign-in"><button class="rounded-3xl ml-2 px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">Sign in</button></a>
+        <a href="/sign-up"><button class="rounded-3xl ml-2 px-4 sm:px-8 lg:px-12 py-3 font-bold text-light bg-customgradient3">Sign up</button></a>
       </div>
       <div class="flex md:hidden md:space-x-4">
         <button id="bars-icon" class="fas fa-solid fa-bars text-2xl text-purple"></button>          
         <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg">
           <a href="/sign-up"><button class="flex rounded-lg py-2 w-full justify-center bg-light font-bold text-purple hover:text-white hover:bg-purple">About me</button></a>
           <a href="/sign-in"><button class="flex rounded-lg py-2 w-full justify-center bg-light font-bold text-purple hover:text-white hover:bg-purple">Sign in</button></a>
-          <a href="/sign-up"><button class="flex rounded-lg py-2 w-full justify-center bg-purple font-bold text-white ">Sign up</button></a>
+          <a href="/sign-up"><button class="flex rounded-lg py-2 w-full justify-center bg-light font-bold text-purple hover:text-white hover:bg-purple">Sign up</button></a>
         </div>
       </div>
     </div>    
@@ -80,133 +80,6 @@
   </div> 
 </div> 
     
-    
-<script>
-  document.getElementById('bars-icon').addEventListener('click', function(event) {
-      event.stopPropagation();
-      var dropdown = document.getElementById('dropdown-menu');
-      dropdown.classList.toggle('hidden');
-  });
-
-  document.addEventListener('click', function(event) {
-      var dropdown = document.getElementById('dropdown-menu');
-      if (!dropdown.classList.contains('hidden') && !event.target.closest('#dropdown-menu')) {
-          dropdown.classList.add('hidden');
-      }
-  });
-
-  window.addEventListener('scroll', function() {
-      const header = document.querySelector('.header');
-      if (window.scrollY > 0) {
-        header.classList.add('bg-light', 'bg-opacity-90', 'shadow-md'); // Menambahkan kelas Tailwind CSS
-      } else {
-        header.classList.remove('bg-light', 'bg-opacity-90', 'shadow-md'); // Menghapus kelas Tailwind CSS
-      }
-    });
-
-
-  // Slider
-  const track = document.getElementById('slider-track'); // Elemen track slider
-  const slides = Array.from(track.children); // Array dari slide
-  const nextButton = document.getElementById('next'); // Tombol next
-  const prevButton = document.getElementById('prev'); // Tombol prev
-  const dots = document.querySelectorAll('.dot'); // Indikator slide
-
-  const slidesToShow = 3; // Jumlah slide yang ditampilkan
-  const slideWidth = track.offsetWidth / slidesToShow; // Lebar setiap slide
-  let currentIndex = slidesToShow; // Indeks slide saat ini (dimulai dari duplikat pertama)
-
-  // Duplikasi slide untuk efek loop tak terbatas
-  const firstSlides = slides.slice(0, slidesToShow).map(slide => slide.cloneNode(true));
-  const lastSlides = slides.slice(-slidesToShow).map(slide => slide.cloneNode(true));
-  firstSlides.forEach(slide => track.appendChild(slide));
-  lastSlides.forEach(slide => track.insertBefore(slide, slides[0]));
-
-  function moveToSlide(index, noTransition = false) {
-    if (noTransition) {
-      track.style.transition = 'none'; // Hapus transisi jika noTransition adalah true
-    } else {
-      track.style.transition = 'transform 0.5s ease-in-out'; // Tambahkan transisi
-    }
-    track.style.transform = `translateX(-${index * slideWidth}px)`; // Pindahkan track
-    currentIndex = index; // Update indeks slide saat ini
-    updateDots(); // Update indikator
-  }
-
-  function updateDots() {
-    const actualIndex = (currentIndex - slidesToShow + slides.length) % slides.length; // Hitung indeks slide sebenarnya
-    dots.forEach((dot, idx) => {
-      dot.classList.toggle('bg-purple', idx === actualIndex); // Set warna abu-abu gelap untuk dot aktif
-      dot.classList.toggle('bg-gray', idx !== actualIndex); // Set warna abu-abu terang untuk dot tidak aktif
-    });
-  }
-
-  function nextSlide() {
-    if (currentIndex < slides.length + slidesToShow) {
-      moveToSlide(currentIndex + 1); // Geser ke slide berikutnya
-    }
-  }
-
-  function prevSlide() {
-    if (currentIndex > 0) {
-      moveToSlide(currentIndex - 1); // Geser ke slide sebelumnya
-    }
-  }
-
-  nextButton.addEventListener('click', () => {
-    nextSlide();
-    if (currentIndex === slides.length + slidesToShow) {
-      setTimeout(() => moveToSlide(slidesToShow, true), 500); // Pindah ke slide pertama tanpa transisi
-    }
-  });
-
-  prevButton.addEventListener('click', () => {
-    prevSlide();
-    if (currentIndex === 0) {
-      setTimeout(() => moveToSlide(slides.length, true), 500); // Pindah ke slide terakhir tanpa transisi
-    }
-  });
-
-  setInterval(() => {
-    nextSlide();
-    if (currentIndex === slides.length + slidesToShow) {
-      setTimeout(() => moveToSlide(slidesToShow, true), 500); // Pindah ke slide pertama tanpa transisi
-    }
-  }, 3000); // Slide otomatis setiap 3 detik
-
-  // Fungsi untuk drag mouse
-  let isDragging = false;
-  let startPos = 0;
-  let currentTranslate = 0;
-  let prevTranslate = 0;
-
-  track.addEventListener('mousedown', startDrag);
-  track.addEventListener('mousemove', drag);
-  track.addEventListener('mouseup', endDrag);
-  track.addEventListener('mouseleave', endDrag);
-
-  function startDrag(e) {
-    isDragging = true; // Tandai bahwa drag telah dimulai
-    startPos = e.pageX; // Simpan posisi awal
-    track.style.transition = 'none'; // Hapus transisi saat drag
-  }
-
-  function drag(e) {
-    if (isDragging) {
-      const currentPosition = e.pageX; // Posisi saat ini dari mouse
-      currentTranslate = prevTranslate + currentPosition - startPos; // Hitung posisi translasi saat ini
-      track.style.transform = `translateX(${currentTranslate}px)`; // Pindahkan track sesuai translasi
-    }
-  }
-
-  function endDrag() {
-    isDragging = false; // Tandai bahwa drag telah selesai
-    prevTranslate = currentTranslate; // Simpan posisi translasi terakhir
-    track.style.transition = 'transform 0.5s ease-in-out'; // Tambahkan kembali transisi
-    // Implementasikan inertia dan snap ke slide terdekat
-  }
-
-  // Pindah ke slide awal
-  moveToSlide(slidesToShow, true);
-</script>
-
+@vite('resources/js/dropdown.js')
+@vite('resources/js/slider.js')
+@vite('resources/js/header.js')
