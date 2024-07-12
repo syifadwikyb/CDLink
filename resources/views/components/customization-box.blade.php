@@ -12,20 +12,20 @@
         display: none;
     }
 </style>
-<div class="flex-grow max-w-full p-8 shadow-2xl customizations">
+<form class="flex-grow max-w-full p-8 shadow-2xl customizations" action="" method="">
     <div class="flex space-x-6">
         <div class="w-1/2 ">
             <h3 class="font-bold">Banner</h3>
             <div class="p-3 bg-white rounded-lg shadow-lg mb-">
                 <div class="flex flex-col justify-between mb-0 overflow-hidden border border-gray-300 rounded-lg h-14">
-                    <form class="flex flex-col justify-end h-full p-2 space-y-2 mb" action="">
+                    <div class="flex flex-col justify-end h-full p-2 space-y-2 mb" action="">
                         <div class="flex justify-center md:space-x-2 md:justify-end">
                             <h1 class="hidden mx-auto my-auto font-light text-center text-gray-400 md:block">Ukuran optimal 800 x 400px,1:2</h1>
                             <label for="filbanner" class="w-full p-2 text-center text-white bg-green-500 rounded cursor-pointer md:w-auto">Upload
                             </label>
                             <input type="file" name="banner" id="filbanner" accept="image/*">
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,14 +33,14 @@
             <h3 class="font-bold">Profile</h3>
             <div class="p-3 mb-3 bg-white rounded-lg shadow-lg">
                 <div class="flex flex-col justify-between mb-0 overflow-hidden border border-gray-300 rounded-lg h-14">
-                    <form class="flex flex-col justify-end h-full p-2 space-y-2 mb" action="">
+                    <div class="flex flex-col justify-end h-full p-2 space-y-2 mb" action="">
                         <div class="flex justify-center md:space-x-2 md:justify-end">
                             <h1 class="hidden mx-auto my-auto font-light text-center text-gray-400 md:block">Ukuran optimal 400 x 400px, 1:1</h1>
                             <label for="filprofile" class="w-full p-2 text-center text-white bg-green-500 rounded cursor-pointer md:w-auto"> Upload
                             </label>
                             <input type="file" name="profile" id="filprofile" accept="image/*">
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,4 +192,5 @@
             </div>
         </div>
     </div>
-</div>
+</form>
+

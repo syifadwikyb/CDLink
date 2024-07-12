@@ -9,16 +9,16 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-light">
-    <img src="{{ asset('asset/sprinkle1.png') }}" alt="" class="w-full h-full absolute -z-10">
+    <img src="{{ asset('asset/sprinkle1.png') }}" alt="" class="absolute w-full h-full -z-10">
     <div class="container m-auto ">
-        <div class="bg-transparent header top-0 sticky z-20 flex justify-between items-center pt-12">
+        <div class="sticky top-0 z-20 flex items-center justify-between pt-12 bg-transparent header">
             <div class="text-light">
                 <p>Logo</p>
                 {{-- <img src="{{ asset('asset/logo.svg') }}" alt=""> --}}
             </div>
             <div class="flex space-x-4">
-                <a href="/sign-in"><button class="rounded-3xl font-bold px-12 py-3 bg-customgradient2 text-light ">Sign in</button></a>
-                <a href="/sign-up"><button class="rounded-3xl font-bold px-12 py-3 bg-gray text-dark-purple hover:bg-customgradient2 hover:text-light">Sign up</button></a>
+                <a href="/sign-in"><button class="px-12 py-3 font-bold rounded-3xl bg-customgradient2 text-light ">Sign in</button></a>
+                <a href="/sign-up"><button class="px-12 py-3 font-bold rounded-3xl bg-gray text-dark-purple hover:bg-customgradient2 hover:text-light">Sign up</button></a>
             </div>
         </div>
         @if (session('message'))
@@ -30,13 +30,13 @@
         <div class="flex items-center justify-center h-screen">
             <form class="p-16 shadow-xl rounded-3xl bg-customgradient2" action="{{ route('sign-in-proses') }}" method="post">                
                 @csrf
-                <h1 class="text-5xl font-bold font-montserrat leading-6 text-center text-dark-purple mb-5">Login</h1>
-                <p class="text-2xl font-bold leading-6 text-center text-dark-purple mb-5">Login Your Account</p>   
-                <div class="sm:col-span-4 mb-2">
+                <h1 class="mb-5 text-5xl font-bold leading-6 text-center font-montserrat text-dark-purple">Login</h1>
+                <p class="mb-5 text-2xl font-bold leading-6 text-center text-dark-purple">Login Your Account</p>   
+                <div class="mb-2 sm:col-span-4">
                     <label for="email" class="block text-lg font-bold leading-6 text-dark-purple">Email</label>
                     <div class="mt-2">
                         <div class="flex shadow-sm">
-                            <input type="email" name="email" id="email" autocomplete="email" class="rounded-full flex-1 bg-light py-3 px-5 text-dark-purple font-semibold placeholder:text-gray focus:outline-none sm:text-base sm:leading-6"
+                            <input type="email" name="email" id="email" autocomplete="email" class="flex-1 px-5 py-3 font-semibold rounded-full bg-light text-dark-purple placeholder:text-gray focus:outline-none sm:text-base sm:leading-6"
                             @if (@isset($_COOKIE['email']))
                             value="{{ ($_COOKIE['email']) }}"                                
                             @endif
@@ -51,12 +51,12 @@
                     <label for="password" class="block text-base font-bold leading-6 text-dark-purple">Password</label>
                     <div class="mt-2">
                         <div class="flex shadow-sm">
-                            <input type="password" name="password" id="password" autocomplete="password" class="rounded-l-full flex-1 bg-light py-3 px-5 text-dark-purple font-semibold placeholder:text-gray focus:outline-none sm:text-base sm:leading-6"
+                            <input type="password" name="password" id="password" autocomplete="password" class="flex-1 px-5 py-3 font-semibold rounded-l-full bg-light text-dark-purple placeholder:text-gray focus:outline-none sm:text-base sm:leading-6"
                             @if (@isset($_COOKIE['password']))
                             value="{{ ($_COOKIE['password']) }}"                                
                             @endif
                             placeholder="Masukkan password">
-                            <span class="icon-eye cursor-pointer py-3 px-5 rounded-r-full bg-light text-dark-purple" onclick="togglePasswordVisibility()">
+                            <span class="px-5 py-3 rounded-r-full cursor-pointer icon-eye bg-light text-dark-purple" onclick="togglePasswordVisibility()">
                                 <i class="fas fa-eye"></i>
                             </span>
                         </div>
@@ -69,10 +69,10 @@
                     <input type="checkbox" id="remember" name="remember">
                     <label for="remember">Remember me</label>
                 </div>
-                <div class="text-sm text-dark font-medium my-4 hover:underline">
+                <div class="my-4 text-sm font-medium text-dark hover:underline">
                     <a href="#">Forgot Password?</a>
                 </div>
-                <button class="bg-light font-bold text-center py-3 px-5 rounded-full w-full text-dark-purple hover:bg-dark-purple hover:text-light">Sign in</button>
+                <button class="w-full px-5 py-3 font-bold text-center rounded-full bg-light text-dark-purple hover:bg-dark-purple hover:text-light">Sign in</button>
             </form>
         </div>
     </div>
