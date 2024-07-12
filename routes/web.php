@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PreviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,3 +36,9 @@ Route::post('/signin', 'LoginController@login')->name('signin');
 // Change Password
 Route::get('/changepass', [LoginController::class, 'changepass'])->name('changepass');
 Route::post('/changepass-proses', [LoginController::class, 'changepass_proses'])->name('changepass-proses');
+
+// Save cust
+
+Route::post('/save-previews', [PreviewController::class, 'store'])->name('previews.store');
+
+

@@ -12,7 +12,7 @@
         display: none;
     }
 </style>
-<form class="flex-grow max-w-full p-8 shadow-2xl customizations" action="" method="">
+<div class="flex-grow max-w-full p-8 shadow-2xl customizations">
     <div class="flex space-x-6">
         <div class="w-1/2 ">
             <h3 class="font-bold">Banner</h3>
@@ -192,5 +192,5 @@
             </div>
         </div>
     </div>
-</form>
+</div>
 
