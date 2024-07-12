@@ -13,7 +13,7 @@ class LoginController extends Controller
     // Menampilkan halaman login
     public function index()
     {
-        return view("components/signin");
+        return view("/signin");
     }
 
     // Proses login
@@ -48,7 +48,7 @@ class LoginController extends Controller
     // Menampilkan halaman signup
     public function signup()
     {
-        return view('components/signup');
+        return view('/signup');
     }
 
     // Proses signup

@@ -5,17 +5,19 @@
       {{-- <img src="{{ asset('asset/logo.svg') }}" alt=""> --}}
     </div>
     <div class="relative">
-      <div class="hidden md:flex">
-        <a href="/sign-up"><button class="rounded-3xl ml-2 px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">About me</button></a>
-        <a href="/sign-in"><button class="rounded-3xl ml-2 px-4 sm:px-8 lg:px-12 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">Sign in</button></a>
-        <a href="/sign-up"><button class="rounded-3xl ml-2 px-4 sm:px-8 lg:px-12 py-3 font-bold text-light bg-customgradient3">Sign up</button></a>
+      <div class="hidden md:flex">  
+        <a href="#template"><button class="rounded-3xl ml-1 px-4 sm:px-8 lg:px-10 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">Template</button></a>
+        <a href="#aboutme"><button class="rounded-3xl ml-1 px-4 sm:px-8 lg:px-10 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">About me</button></a>
+        <a href="/sign-in"><button class="rounded-3xl ml-1 px-4 sm:px-8 lg:px-10 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">Sign in</button></a>
+        <a href="/sign-up"><button class="rounded-3xl ml-1 px-4 sm:px-8 lg:px-10 py-3 font-bold text-light bg-customgradient3">Sign up</button></a>
       </div>
       <div class="flex md:hidden md:space-x-4">
         <button id="bars-icon" class="fas fa-solid fa-bars text-2xl text-purple"></button>          
         <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg">
-          <a href="/sign-up"><button class="flex rounded-lg py-2 w-full justify-center bg-light font-bold text-purple hover:text-white hover:bg-purple">About me</button></a>
-          <a href="/sign-in"><button class="flex rounded-lg py-2 w-full justify-center bg-light font-bold text-purple hover:text-white hover:bg-purple">Sign in</button></a>
-          <a href="/sign-up"><button class="flex rounded-lg py-2 w-full justify-center bg-light font-bold text-purple hover:text-white hover:bg-purple">Sign up</button></a>
+          <a href="/sign-up"><button class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Sign up</button></a>
+          <a href="/sign-in"><button class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Sign in</button></a>
+          <a href="#aboutme"><button class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">About me</button></a>
+          <a href="#template"><button class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Template</button></a>
         </div>
       </div>
     </div>    
@@ -35,7 +37,7 @@
       </div>
     </div>
   </div>
-
+  <p class="pt-16" id="aboutme"></p>
   <div class="tentang mt-10 flex flex-col items-center lg:flex-row lg:text-center">
     <img src="{{ asset('asset/tentang.svg') }}" class="w-full hidden lg:w-1/2 lg:flex" alt="">
     <div class="text-black -ml-0 pr-5 mt-6 text-center lg:-ml-36 lg:mt-0 lg:text-left">
@@ -43,6 +45,7 @@
         <p class="text-lg lg:text-xl">Web ini merupakan Ekspresikan Kreativitasmu dalam Website yang Memukau!Ekspresikan Kreativitasmu dalam Website yang Memukau! Web ini merupakan Ekspresikan Kreativitasmu dalam Website yang Memukau!Ekspresikan Kreativitasmu dalam Website yang Memukau!</p>
     </div>
   </div>
+  <p class="pt-16" id="template"></p>
   <div class="text-center pb-5">
       <h1 class="font-bold mt-10 pb-4 text-3xl lg:text-4xl">The Best Creators Use Lynk.id</h1>
       <p class="text-lg lg:text-xl">See how our creators use Stan to superpower their businesses!</p>
