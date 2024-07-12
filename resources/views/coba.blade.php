@@ -8,10 +8,10 @@
     @vite('resources/css/app.css')
     <title>Selamat Datang</title>
 </head>
-<body class="bg-light">
-    <img src="{{ asset('asset/sprinkle1.png') }}" alt="" class="w-full h-full absolute -z-10">
+<body class="bg-white">
+    {{-- <img src="{{ asset('asset/sprinkle1.png') }}" alt="" class="w-full h-full absolute -z-10"> --}}
     <div class="container m-auto ">
-        <div class="top-0 sticky z-20 flex justify-between items-center pt-12">
+        <div class="flex bg-green-200 mb-2 justify-between items-center pt-12">
             <div class="">
                 <p>Logo</p>
             </div>
@@ -24,10 +24,16 @@
                 </div>
             </div>
         </div>
+        <div class="flex">
+            <x-customizationBox></x-customizationBox>
+            <div class="sticky">
+                <x-previewBox></x-previewBox>
+            </div>
+        </div>
     </div>
-    <h1 class="text-center text-5xl font-bold">
+    {{-- <h1 class="text-center text-5xl font-bold">
         Selamat Datang {{ $userName }} <br> ({{ $userEmail }})
-    </h1>
+    </h1> --}}
     @vite('resources/js/dropdown.js')
 </body>
 </html>
