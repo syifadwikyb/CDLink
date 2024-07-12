@@ -10,27 +10,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-
-    
 </head>
-
 <body>
-    <div class="mx-auto bg-gray-100 shadow-xl xl:flex">
-        <x-customization-box></x-customization-box>
-        <x-preview-box></x-preview-box>
-    </div>
-
+    <x-layout></x-layout>
 </body>
 <script>
-    
-    function removeImage(inputId) {
-    if (inputId === 'filbanner') {
-        document.getElementById('bannerPreview').src = "{{ asset('img/banner.png') }}";
-    } else if (inputId === 'filprofile') {
-        document.getElementById('profilePreview').src = "{{ asset('img/pp.png') }}";
-    }
-}
-
     document.getElementById('filbanner').addEventListener('change', function (event) {
         const file = event.target.files[0];
         if (file) {
@@ -42,7 +26,6 @@
             reader.readAsDataURL(file);
         }
     });
-
     document.getElementById('filprofile').addEventListener('change', function (event) {
         const file = event.target.files[0];
         if (file) {
@@ -54,7 +37,6 @@
             reader.readAsDataURL(file);
         }
     });
-
     function generateLinkInput(iconClass) {
         const linkInputValue = document.getElementById('linkInput').value;
         if (linkInputValue) {
@@ -90,7 +72,6 @@
             inputElement.addEventListener('input', () => {
                 linkButton.href = inputElement.value;
             });
-
             linkInputItem.appendChild(inputElement);
             linkInputItem.appendChild(deleteButton);
 
@@ -103,23 +84,18 @@
             alert('Please enter a link first.');
         }
     }
-
     function toggleBold() {
         dataset.fontWeight = dataset.fontWeight === 'bold' ? 'normal' : 'bold';
         applyFontProperties();
     }
-
     function toggleItalic() {
         dataset.fontStyle = dataset.fontStyle === 'italic' ? 'normal' : 'italic';
         applyFontProperties();
     }
-
     function toggleUnderline() {
         dataset.textDecoration = dataset.textDecoration === 'underline' ? 'none' : 'underline';
         applyFontProperties();
     }
-
-
     function updateTitle() {
         dataset.title = document.getElementById('titleInput').value;
         if (dataset.title === '') {
@@ -128,9 +104,7 @@
             document.querySelector('.Title').innerText = dataset.title;
         }
         applyFontProperties();
-
     }
-
     function updateAbout() {
         dataset.about = document.getElementById('aboutInput').value;
         if (dataset.about === '') {
@@ -140,8 +114,6 @@
         }
         applyFontProperties();
     }
-
-
     function applyFontProperties() {
         const buttons = document.querySelectorAll('btnEx')
         buttons.forEach(btn => {
@@ -149,10 +121,7 @@
             btn.style.fontStyle = dataset.fontStyle;
             btn.style.textDecoration = dataset.textDecoration;
         });
-
     }
-
-
     function applyDataset() {
         document.querySelector('.Title').innerText = dataset.title;
         document.querySelector('.display').className =
@@ -164,17 +133,14 @@
         background: '',
         fontcolor: ''
     };
-
     function changeFont(font) {
         dataset.font = font;
         bgdataset();
     }
-
     function changeBackground(gradientClass) {
         dataset.background = gradientClass;
         bgdataset();
     }
-
     function applyCustomBackground() {
         const grad1 = document.getElementById('grad-1').value;
         const grad2 = document.getElementById('grad-2').value;
@@ -185,24 +151,20 @@
         document.getElementById('color2').textContent = grad2;
         bgdataset();
     }
-
     function changeFontColor() {
         const fontcolor = document.getElementById('font-c').value;
         dataset.fontcolor = fontcolor;
         document.getElementById('font-color-hex').textContent = fontcolor;
         bgdataset();
     }
-
     function changeFontWhite() {
         dataset.fontcolor = `white`;
         bgdataset();
     }
-
     function changeFontBlack() {
         dataset.fontcolor = `black`;
         bgdataset();
     }
-
     function bgdataset() {
         const displayElement = document.querySelector('.display');
 
@@ -224,15 +186,12 @@
             displayElement.style.color = dataset.fontcolor;
         }
     }
-
     function openWarna() {
         document.getElementById('modalWarna').classList.remove('hidden');
     }
-
     function closeWarna() {
         document.getElementById('modalWarna').classList.add('hidden');
     }
-
     function addLinkButton() {
         const textInput = document.getElementById('textInput');
         const urlInput = document.getElementById('urlInput');
