@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Preview; // Make sure this import is present
+use App\Models\Preview;
 
 class PreviewController extends Controller
 {
@@ -17,7 +17,7 @@ class PreviewController extends Controller
         ]);
 
         $preview = new Preview();
-        $preview->display_preview_class = $request->displayPreview;
+        $preview->display_preview_class = $request->displayPreviewClass; // Corrected
         $preview->banner_preview = $request->bannerPreview;
         $preview->profile_preview = $request->profilePreview;
         $preview->title_preview = $request->titlePreview;
@@ -27,4 +27,3 @@ class PreviewController extends Controller
         return redirect()->back()->with('success', 'Previews saved successfully!');
     }
 }
-

@@ -1,4 +1,4 @@
-<form action="{{ route('previews.store') }}" method="POST">
+<form id="previewForm" action="{{ route('previews.store') }}" method="POST" onsubmit="return setProps()">
     @csrf
     <input type="hidden" name="displayPreviewClass" id="displayPreviewClass" value="">
     <input type="hidden" name="bannerPreview" id="bannerPreviewInput" value="">
@@ -6,8 +6,7 @@
     <input type="hidden" name="titlePreview" id="titlePreviewInput" value="">
     <input type="hidden" name="aboutPreview" id="aboutPreviewInput" value="">
 
-    <div
-        class="mx-auto overflow-hidden rounded-3xl border-8 border-black bg-black w-[380px] xl:w-[380px] h-[800px] mt-6 xl:mt-0">
+    <div class="mx-auto overflow-hidden rounded-3xl border-8 border-black bg-black w-[380px] xl:w-[380px] h-[800px] mt-6 xl:mt-0">
         <h1 class="w-full px-3 text-right text-white bg-gray-400 rounded-t-2xl">5G ᯤ | 50%</h1>
         <img class="max-h-[170px] w-full object-cover" src="{{ asset('asset/banner.png') }}" id="bannerPreview" alt="Banner">
         <div class="display px-3 pt-2 my-auto h-full max-h-[670px] mb-0 w-full bg-white flex-grow-1 rounded-b-2xl" id="displayPreview">
@@ -26,11 +25,28 @@
 </form>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('displayPreviewClass').value = document.getElementById('displayPreview').className;
-        document.getElementById('bannerPreviewInput').value = document.getElementById('bannerPreview').src;
-        document.getElementById('profilePreviewInput').value = document.getElementById('profilePreview').src;
-        document.getElementById('titlePreviewInput').value = document.getElementById('titlePreview').innerText;
-        document.getElementById('aboutPreviewInput').value = document.getElementById('aboutPreview').innerText;
-    });
+    function setProps() {
+        var displayPreviewClass = document.getElementById('displayPreview').className;
+        var bannerPreviewSrc = document.getElementById('bannerPreview').src;
+        var profilePreviewSrc = document.getElementById('profilePreview').src;
+        var titlePreviewText = document.getElementById('titlePreview').innerText;
+        var aboutPreviewText = document.getElementById('aboutPreview').innerText;
+
+        console.log('displayPreviewClass:', displayPreviewClass);
+        console.log('bannerPreviewSrc:', bannerPreviewSrc);
+        console.log('profilePreviewSrc:', profilePreviewSrc);
+        console.log('titlePreviewText:', titlePreviewText);
+        console.log('aboutPreviewText:', aboutPreviewText);
+
+        document.getElementById('displayPreviewClass').value = displayPreviewClass;
+        document.getElementById('bannerPreviewInput').value = bannerPreviewSrc;
+        document.getElementById('profilePreviewInput').value = profilePreviewSrc;
+        document.getElementById('titlePreviewInput').value = titlePreviewText;
+        document.getElementById('aboutPreviewInput').value = aboutPreviewText;
+
+        // Confirm values are set in the hidden inputs
+        console.log('displayPreviewClass (hidden input):', document.getElementById('displayPreviewClass').value);
+
+        return true; // Allow form submission
+    }
 </script>
