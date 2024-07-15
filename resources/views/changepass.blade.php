@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     @vite('resources/css/app.css')
 </head>
-<body class="bg-light">
+<body class="bg-light font-montserrat">
     <img src="{{ asset('asset/sprinkle1.png') }}" alt="" class="w-full h-full absolute -z-10">
     <div class="container m-auto ">
         <div class="flex items-center justify-center h-screen">

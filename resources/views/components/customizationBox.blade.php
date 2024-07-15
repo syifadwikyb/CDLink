@@ -12,16 +12,16 @@
         display: none;
     }
 </style>
-<div class="flex-grow max-w-full p-8 shadow-2xl customizations">
+<div class="flex-grow max-w-full p-8 rounded-xl shadow-2xl customizations">
     <div class="flex space-x-6">
         <div class="w-1/2 ">
-            <h3 class="font-bold">Banner</h3>
+            <h3 class="font-bold text-dark text-lg">Banner</h3>
             <div class="p-3 bg-white rounded-lg shadow-lg mb-">
                 <div class="flex flex-col justify-between mb-0 overflow-hidden border border-gray-300 rounded-lg h-14">
                     <form class="flex flex-col justify-end h-full p-2 space-y-2 mb" action="">
                         <div class="flex justify-center md:space-x-2 md:justify-end">
                             <h1 class="hidden mx-auto my-auto font-light text-center text-gray-400 md:block">Ukuran optimal 800 x 400px,1:2</h1>
-                            <label for="filbanner" class="w-full p-2 text-center text-white bg-green-500 rounded cursor-pointer md:w-auto">Upload
+                            <label for="filbanner" class="w-full p-2 text-center text-white bg-green-500 hover:bg-green-700 rounded cursor-pointer md:w-auto">Upload
                             </label>
                             <input type="file" name="banner" id="filbanner" accept="image/*">
                         </div>
@@ -30,13 +30,13 @@
             </div>
         </div>
         <div class="w-1/2 ">
-            <h3 class="font-bold">Profile</h3>
+            <h3 class="font-bold text-dark text-lg">Profile</h3>
             <div class="p-3 mb-3 bg-white rounded-lg shadow-lg">
                 <div class="flex flex-col justify-between mb-0 overflow-hidden border border-gray-300 rounded-lg h-14">
                     <form class="flex flex-col justify-end h-full p-2 space-y-2 mb" action="">
                         <div class="flex justify-center md:space-x-2 md:justify-end">
                             <h1 class="hidden mx-auto my-auto font-light text-center text-gray-400 md:block">Ukuran optimal 400 x 400px, 1:1</h1>
-                            <label for="filprofile" class="w-full p-2 text-center text-white bg-green-500 rounded cursor-pointer md:w-auto"> Upload
+                            <label for="filprofile" class="w-full p-2 text-center text-white bg-green-500 hover:bg-green-700 rounded cursor-pointer md:w-auto"> Upload
                             </label>
                             <input type="file" name="profile" id="filprofile" accept="image/*">
                         </div>
@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="flex-grow mb-3">
-        <h3 class="font-bold">Title</h3>
+        <h3 class="font-bold text-dark text-lg">Title</h3>
         <div class="p-3 bg-white rounded-lg shadow-lg">
             <div class="flex mb-0 space-x-2 h-11">
                 <textarea maxlength="100" class="flex-grow w-full h-full max-h-full min-h-full p-2 border border-gray-300 rounded-lg"
@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="flex-grow mb-3">
-        <h3 class="font-bold">About</h3>
+        <h3 class="font-bold text-dark text-lg">About</h3>
         <div class="p-3 bg-white rounded-lg shadow-lg">
             <div class="flex mb-0 space-x-2rounded-lg h-28">
                 <textarea class="flex-grow w-full h-full max-h-full min-h-full p-2 bg-transparent border border-gray-300 rounded-lg"
@@ -64,30 +64,30 @@
         </div>
     </div>
     <div class="flex-grow mb-3">
-        <h3 class="font-bold">Social Media</h3>
+        <h3 class="font-bold text-dark text-lg">Social Media</h3>
         <div class="p-3 bg-white rounded-lg shadow-lg">
             <input type="text" class="flex-grow w-full h-full p-2 bg-transparent border border-gray-300 rounded-lg"
                 placeholder="Masukkan Link" id="linkInput" on>
             <div id="linkInputs" class="mt-2 space-y-2"></div>
             <div class="flex justify-center w-full mx-auto space-x-2">
-                <x-button class="bi-envelope-fill size-8" onclick="generateLinkInput('bi-envelope-fill')"></x-button>
-                <x-button class="bi-whatsapp size-8" onclick="generateLinkInput('bi-whatsapp')"></x-button>
-                <x-button class="bi-linkedin size-8" onclick="generateLinkInput('bi-linkedin')"></x-button>
-                <x-button class="bi-instagram size-8" onclick="generateLinkInput('bi-instagram')"></x-button>
-                <x-button class="bi-twitter-x size-8" onclick="generateLinkInput('bi-twitter-x')"></x-button>
-                <x-button class="bi-youtube size-8" onclick="generateLinkInput('bi-youtube')"></x-button>
-                <x-button class="bi-telegram size-8" onclick="generateLinkInput('bi-telegram')"></x-button>
-                <x-button class="bi-facebook size-8" onclick="generateLinkInput('bi-facebook')"></x-button>
-                <x-button class="bi-discord size-8" onclick="generateLinkInput('bi-discord')"></x-button>
-                <x-button class="bi-bag size-8" onclick="generateLinkInput('bi-bag')"></x-button>
-                <x-button class="bi-link-45deg size-8" onclick="generateLinkInput('bi-link-45deg')"></x-button>
+                <x-button class="bi-envelope-fill size-10 hover:text-red-700" onclick="generateLinkInput('bi-envelope-fill')"></x-button>
+                <x-button class="bi-whatsapp size-10 hover:text-green-700" onclick="generateLinkInput('bi-whatsapp')"></x-button>
+                <x-button class="bi-linkedin size-10 hover:text-blue" onclick="generateLinkInput('bi-linkedin')"></x-button>
+                <x-button class="bi-instagram size-10 hover:text-red-700" onclick="generateLinkInput('bi-instagram')"></x-button>
+                <x-button class="bi-twitter-x size-10 hover:text-black" onclick="generateLinkInput('bi-twitter-x')"></x-button>
+                <x-button class="bi-youtube size-10 hover:text-red-700" onclick="generateLinkInput('bi-youtube')"></x-button>
+                <x-button class="bi-telegram size-10 hover:text-blue" onclick="generateLinkInput('bi-telegram')"></x-button>
+                <x-button class="bi-facebook size-10 hover:text-blue" onclick="generateLinkInput('bi-facebook')"></x-button>
+                <x-button class="bi-discord size-10 hover:text-blue" onclick="generateLinkInput('bi-discord')"></x-button>
+                <x-button class="bi-bag size-10 hover:text-yellow-400" onclick="generateLinkInput('bi-bag')"></x-button>
+                <x-button class="bi-link-45deg size-10 hover:text-green-700" onclick="generateLinkInput('bi-link-45deg')"></x-button>
             </div>
 
 
         </div>
     </div>
     <div class="mx-auto mb-3">
-        <h3 class="font-bold">Background</h3>
+        <h3 class="font-bold text-dark text-lg">Background</h3>
         <div class="p-3 bg-white rounded-lg shadow-lg">
             <div class="flex justify-center w-full mx-auto space-x-2">
                 <x-button class="w-1/6 py-2 bg-gradient-to-tr from-red-700 to-rose-500" onclick="changeBackground('bg-gradient-to-tr from-red-700 to-rose-500'), changeFontBlack()"> Red-Rose </x-button>
@@ -138,9 +138,9 @@
         </div>
     </div>
     <div class="flex-grow mb-3">
-        <h3 class="font-bold">Button Links</h3>
+        <h3 class="font-bold text-dark text-lg">Button Links</h3>
         <div class="p-3 bg-white rounded-lg shadow-lg">
-            <div class="flex mb-4 space-x-2">
+            <div class="flex space-x-2">
                 <input type="text"
                     class="flex-grow w-full h-full p-2 bg-transparent border border-gray-300 rounded-lg"
                     placeholder="Masukkan teks" id="textInput">
@@ -156,7 +156,7 @@
         </div>
     </div>
     <div class="flex-grow mb-3">
-        <h3 class="font-bold">Font</h3>
+        <h3 class="font-bold text-dark text-lg">Font</h3>
         <div class="p-3 bg-white rounded-lg shadow">
             <div class="flex justify-center w-full mx-auto space-x-2">
                 <div class="w-1/5">

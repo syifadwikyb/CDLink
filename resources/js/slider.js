@@ -16,9 +16,9 @@ lastSlides.forEach(slide => track.insertBefore(slide, slides[0]));
 
 function moveToSlide(index, noTransition = false) {
     if (noTransition) {
-    track.style.transition = 'none'; // Hapus transisi jika noTransition adalah true
+        track.style.transition = 'none'; // Hapus transisi jika noTransition adalah true
     } else {
-    track.style.transition = 'transform 0.5s ease-in-out'; // Tambahkan transisi
+        track.style.transition = 'transform 0.5s ease-in-out'; // Tambahkan transisi
     }
     track.style.transform = `translateX(-${index * slideWidth}px)`; // Pindahkan track
     currentIndex = index; // Update indeks slide saat ini
@@ -28,40 +28,116 @@ function moveToSlide(index, noTransition = false) {
 function updateDots() {
     const actualIndex = (currentIndex - slidesToShow + slides.length) % slides.length; // Hitung indeks slide sebenarnya
     dots.forEach((dot, idx) => {
-    dot.classList.toggle('bg-purple', idx === actualIndex); // Set warna abu-abu gelap untuk dot aktif
-    dot.classList.toggle('bg-gray', idx !== actualIndex); // Set warna abu-abu terang untuk dot tidak aktif
+        dot.classList.toggle('bg-purple', idx === actualIndex); // Set warna abu-abu gelap untuk dot aktif
+        dot.classList.toggle('bg-gray', idx !== actualIndex); // Set warna abu-abu terang untuk dot tidak aktif
     });
 }
 
 function nextSlide() {
     if (currentIndex < slides.length + slidesToShow) {
-    moveToSlide(currentIndex + 1); // Geser ke slide berikutnya
+        moveToSlide(currentIndex + 1); // Geser ke slide berikutnya
     }
 }
 
 function prevSlide() {
     if (currentIndex > 0) {
-    moveToSlide(currentIndex - 1); // Geser ke slide sebelumnya
+        moveToSlide(currentIndex - 1); // Geser ke slide sebelumnya
     }
 }
 
 nextButton.addEventListener('click', () => {
     nextSlide();
     if (currentIndex === slides.length + slidesToShow) {
-    setTimeout(() => moveToSlide(slidesToShow, true), 500); // Pindah ke slide pertama tanpa transisi
+        setTimeout(() => moveToSlide(slidesToShow, true), 500); // Pindah ke slide pertama tanpa transisi
     }
 });
 
 prevButton.addEventListener('click', () => {
     prevSlide();
     if (currentIndex === 0) {
-    setTimeout(() => moveToSlide(slides.length, true), 500); // Pindah ke slide terakhir tanpa transisi
+        setTimeout(() => moveToSlide(slides.length, true), 500); // Pindah ke slide terakhir tanpa transisi
     }
 });
 
 setInterval(() => {
     nextSlide();
     if (currentIndex === slides.length + slidesToShow) {
-    setTimeout(() => moveToSlide(slidesToShow, true), 500); // Pindah ke slide pertama tanpa transisi
+        setTimeout(() => moveToSlide(slidesToShow, true), 500); // Pindah ke slide pertama tanpa transisi
     }
 }, 3000); // Slide otomatis setiap 3 detik
+
+// Variabel untuk drag/swipe
+let startPos = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let animationID;
+let dragging = false;
+
+// Event Listener untuk drag/swipe dengan mouse
+track.addEventListener('mousedown', (e) => {
+    startPos = e.pageX;
+    dragging = true;
+    animationID = requestAnimationFrame(animation);
+    track.style.transition = 'none';
+});
+
+window.addEventListener('mouseup', () => {
+    cancelAnimationFrame(animationID);
+    if (dragging) {
+        const movedBy = currentTranslate - prevTranslate;
+        if (movedBy < -100 && currentIndex < slides.length + slidesToShow) {
+            nextSlide();
+        } else if (movedBy > 100 && currentIndex > 0) {
+            prevSlide();
+        } else {
+            moveToSlide(currentIndex);
+        }
+        prevTranslate = currentTranslate; // Perbarui posisi translate sebelumnya
+        dragging = false;
+    }
+});
+
+window.addEventListener('mousemove', (e) => {
+    if (dragging) {
+        const currentPosition = e.pageX;
+        currentTranslate = prevTranslate + currentPosition - startPos;
+        track.style.transform = `translateX(${currentTranslate}px)`;
+    }
+});
+
+// Event Listener untuk swipe dengan touch
+track.addEventListener('touchstart', (e) => {
+    startPos = e.touches[0].clientX;
+    dragging = true;
+    animationID = requestAnimationFrame(animation);
+    track.style.transition = 'none';
+});
+
+window.addEventListener('touchend', () => {
+    cancelAnimationFrame(animationID);
+    if (dragging) {
+        const movedBy = currentTranslate - prevTranslate;
+        if (movedBy < -100 && currentIndex < slides.length + slidesToShow) {
+            nextSlide();
+        } else if (movedBy > 100 && currentIndex > 0) {
+            prevSlide();
+        } else {
+            moveToSlide(currentIndex);
+        }
+        prevTranslate = currentTranslate; // Perbarui posisi translate sebelumnya
+        dragging = false;
+    }
+});
+
+window.addEventListener('touchmove', (e) => {
+    if (dragging) {
+        const currentPosition = e.touches[0].clientX;
+        currentTranslate = prevTranslate + currentPosition - startPos;
+        track.style.transform = `translateX(${currentTranslate}px)`;
+    }
+});
+
+function animation() {
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    if (dragging) requestAnimationFrame(animation);
+}

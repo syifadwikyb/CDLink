@@ -1,6 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-roboto: 'Roboto', sans-serif;
+    --font-baskervville: 'Baskervville SC', serif;
+    --font-opensans: 'Open Sans', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-lato: 'Lato', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-ubuntu: 'Ubuntu', sans-serif;
+    --font-merriweather: 'Merriweather', serif;
+    --font-lora: 'Lora', serif;
+    --font-bebasneue: 'Bebas Neue', cursive;
+    --font-sourcecodepro: 'Source Code Pro', monospace;
+    --font-plusjakartasans: 'Plus Jakarta Sans', sans-serif;
+    --font-rowdies: 'Rowdies', cursive;
+    --font-abrilfatface: 'Abril Fatface', cursive;
+    --font-orbitron: 'Orbitron', sans-serif;
+    --font-blackopsone: 'Black Ops One', cursive;
+    --font-rubikmonoone: 'Rubik Mono One', sans-serif;
+    --font-merienda: 'Merienda', cursive;
+    --font-kalam: 'Kalam', cursive;
+  }
+  
+  .font-montserrat { font-family: var(--font-montserrat); }
+  .font-roboto { font-family: var(--font-roboto); }
+  .font-baskervville { font-family: var(--font-baskervville); }
+  .font-opensans { font-family: var(--font-opensans); }
+  .font-poppins { font-family: var(--font-poppins); }
+  .font-lato { font-family: var(--font-lato); }
+  .font-inter { font-family: var(--font-inter); }
+  .font-ubuntu { font-family: var(--font-ubuntu); }
+  .font-merriweather { font-family: var(--font-merriweather); }
+  .font-lora { font-family: var(--font-lora); }
+  .font-bebasneue { font-family: var(--font-bebasneue); }
+  .font-sourcecodepro { font-family: var(--font-sourcecodepro); }
+  .font-plusjakartasans { font-family: var(--font-plusjakartasans); }
+  .font-rowdies { font-family: var(--font-rowdies); }
+  .font-abrilfatface { font-family: var(--font-abrilfatface); }
+  .font-orbitron { font-family: var(--font-orbitron); }
+  .font-blackopsone { font-family: var(--font-blackopsone); }
+  .font-rubikmonoone { font-family: var(--font-rubikmonoone); }
+  .font-merienda { font-family: var(--font-merienda); }
+  .font-kalam { font-family: var(--font-kalam); }
