@@ -1,7 +1,9 @@
 <?php
+// app/Http/Controllers/PreviewController.php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Preview;
 
 class PreviewController extends Controller
@@ -10,16 +12,19 @@ class PreviewController extends Controller
     {
         $request->validate([
             'displayPreviewClass' => 'required|string',
-            'bannerPreview' => 'required|string',
-            'profilePreview' => 'required|string',
+            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'profile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'titlePreview' => 'required|string',
             'aboutPreview' => 'required|string',
         ]);
 
+        $bannerPath = $request->file('banner')->store('uploads', 'public');
+        $profilePath = $request->file('profile')->store('uploads', 'public');
+
         $preview = new Preview();
-        $preview->display_preview_class = $request->displayPreviewClass; // Corrected
-        $preview->banner_preview = $request->bannerPreview;
-        $preview->profile_preview = $request->profilePreview;
+        $preview->display_preview_class = $request->displayPreviewClass;
+        $preview->banner_preview = Storage::url($bannerPath);
+        $preview->profile_preview = Storage::url($profilePath);
         $preview->title_preview = $request->titlePreview;
         $preview->about_preview = $request->aboutPreview;
         $preview->save();
@@ -27,3 +32,4 @@ class PreviewController extends Controller
         return redirect()->back()->with('success', 'Previews saved successfully!');
     }
 }
+
