@@ -24,3 +24,4 @@ class CreatePreviewsTable extends Migration
         Schema::dropIfExists('previews');
     }
 }
+

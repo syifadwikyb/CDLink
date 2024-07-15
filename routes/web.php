@@ -40,5 +40,6 @@ Route::post('/changepass-proses', [LoginController::class, 'changepass_proses'])
 // Save cust
 
 Route::post('/save-previews', [PreviewController::class, 'store'])->name('previews.store');
+Route::post('/previews', [PreviewController::class, 'store'])->name('previews.store');
 
 

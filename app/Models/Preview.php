@@ -16,4 +16,10 @@ class Preview extends Model
         'title_preview',
         'about_preview',
     ];
+
+    public function buttons()
+    {
+        return $this->hasMany(Button::class);
+    }
 }
+
