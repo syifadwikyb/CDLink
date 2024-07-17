@@ -1,11 +1,10 @@
 <?php
-// app/Http/Controllers/PreviewController.php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Preview;
 use App\Models\Button;
+use Illuminate\Support\Facades\Storage;
 
 class PreviewController extends Controller
 {
@@ -28,33 +27,40 @@ class PreviewController extends Controller
         $bannerPath = $request->file('banner')->store('uploads', 'public');
         $profilePath = $request->file('profile')->store('uploads', 'public');
 
-        $preview = new Preview();
-        $preview->display_preview_class = $request->displayPreviewClass;
-        $preview->banner_preview = Storage::url($bannerPath);
-        $preview->profile_preview = Storage::url($profilePath);
-        $preview->title_preview = $request->titlePreview;
-        $preview->about_preview = $request->aboutPreview;
-        $preview->save();
+        $preview = Preview::updateOrCreate(
+            ['user_id' => $request->user()->id],
+            [
+                'display_preview_class' => $request->displayPreviewClass,
+                'banner_preview' => Storage::url($bannerPath),
+                'profile_preview' => Storage::url($profilePath),
+                'title_preview' => $request->titlePreview,
+                'about_preview' => $request->aboutPreview,
+            ]
+        );
 
         if ($request->has('socialButtons')) {
             foreach ($request->socialButtons as $socialButton) {
-                Button::create([
-                    'preview_id' => $preview->id,
-                    'type' => 'social',
-                    'text' => $socialButton['icon'],
-                    'url' => $socialButton['url'],
-                ]);
+                Button::updateOrCreate(
+                    ['preview_id' => $preview->id, 'url' => $socialButton['url']],
+                    [
+                        'type' => 'social',
+                        'text' => $socialButton['icon'],
+                        'url' => $socialButton['url'],
+                    ]
+                );
             }
         }
 
         if ($request->has('linkButtons')) {
             foreach ($request->linkButtons as $linkButton) {
-                Button::create([
-                    'preview_id' => $preview->id,
-                    'type' => 'link',
-                    'text' => $linkButton['text'],
-                    'url' => $linkButton['url'],
-                ]);
+                Button::updateOrCreate(
+                    ['preview_id' => $preview->id, 'url' => $linkButton['url']],
+                    [
+                        'type' => 'link',
+                        'text' => $linkButton['text'],
+                        'url' => $linkButton['url'],
+                    ]
+                );
             }
         }
 

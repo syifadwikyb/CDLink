@@ -42,4 +42,5 @@ Route::post('/changepass-proses', [LoginController::class, 'changepass_proses'])
 Route::post('/save-previews', [PreviewController::class, 'store'])->name('previews.store');
 Route::post('/previews', [PreviewController::class, 'store'])->name('previews.store');
 
+Route::get('/user/preview', [PreviewController::class, 'show'])->middleware('auth')->name('user.preview');
 

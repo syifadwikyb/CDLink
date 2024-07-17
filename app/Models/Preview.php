@@ -1,5 +1,6 @@
 <?php
 // app/Models/Preview.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,11 +16,18 @@ class Preview extends Model
         'profile_preview',
         'title_preview',
         'about_preview',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function buttons()
     {
         return $this->hasMany(Button::class);
     }
 }
+
 
