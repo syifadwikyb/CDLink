@@ -32,50 +32,51 @@
 </form>
 <button class="p-2 bg-white" onclick="setProps()">test</button>
 
+
 <script>
     function setProps() {
-            document.getElementById('displayPreviewClass').value = document.getElementById('displayPreview').className;
-            document.getElementById('titlePreviewInput').value = document.getElementById('titlePreview').innerText;
-            document.getElementById('aboutPreviewInput').value = document.getElementById('aboutPreview').innerText;
+        document.getElementById('displayPreviewClass').value = document.getElementById('displayPreview').className;
+        document.getElementById('titlePreviewInput').value = document.getElementById('titlePreview').innerText;
+        document.getElementById('aboutPreviewInput').value = document.getElementById('aboutPreview').innerText;
 
-            // Clear previous hidden inputs
-            document.getElementById('socialButtonsContainer').innerHTML = '';
-            document.getElementById('linkButtonsContainer').innerHTML = '';
+        // Clear previous hidden inputs
+        document.getElementById('socialButtonsContainer').innerHTML = '';
+        document.getElementById('linkButtonsContainer').innerHTML = '';
 
-            // Set values for social buttons
-            const socialButtons = document.querySelectorAll('.social-button');
-            socialButtons.forEach((button, index) => {
-                let input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = `socialButtons[${index}][url]`;
-                input.value = button.href;
-                document.getElementById('socialButtonsContainer').appendChild(input);
+        // Set values for social buttons
+        const socialButtons = document.querySelectorAll('.social-button');
+        socialButtons.forEach((button, index) => {
+            let input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = `socialButtons[${index}][url]`;
+            input.value = button.href;
+            document.getElementById('socialButtonsContainer').appendChild(input);
 
-                let icon = document.createElement('input');
-                icon.type = 'hidden';
-                icon.name = `socialButtons[${index}][icon]`;
-                icon.value = button.innerHTML;
-                document.getElementById('socialButtonsContainer').appendChild(icon);
-            });
+            let icon = document.createElement('input');
+            icon.type = 'hidden';
+            icon.name = `socialButtons[${index}][icon]`;
+            icon.value = button.innerHTML;
+            document.getElementById('socialButtonsContainer').appendChild(icon);
+        });
 
-            // Set values for link buttons
-            const linkButtons = document.querySelectorAll('.link-button');
-            linkButtons.forEach((button, index) => {
-                let textInput = document.createElement('input');
-                textInput.type = 'hidden';
-                textInput.name = `linkButtons[${index}][text]`;
-                textInput.value = button.textContent;
-                document.getElementById('linkButtonsContainer').appendChild(textInput);
+        // Set values for link buttons
+        const linkButtons = document.querySelectorAll('.link-button');
+        linkButtons.forEach((button, index) => {
+            let textInput = document.createElement('input');
+            textInput.type = 'hidden';
+            textInput.name = `linkButtons[${index}][text]`;
+            textInput.value = button.textContent;
+            document.getElementById('linkButtonsContainer').appendChild(textInput);
 
-                let urlInput = document.createElement('input');
-                urlInput.type = 'hidden';
-                urlInput.name = `linkButtons[${index}][url]`;
-                urlInput.value = button.href;
-                document.getElementById('linkButtonsContainer').appendChild(urlInput);
-            });
+            let urlInput = document.createElement('input');
+            urlInput.type = 'hidden';
+            urlInput.name = `linkButtons[${index}][url]`;
+            urlInput.value = button.href;
+            document.getElementById('linkButtonsContainer').appendChild(urlInput);
+        });
 
-            return true;
-        }
+        return true;
+    }
 
         function previewImage(inputId, imgId) {
             const input = document.getElementById(inputId);

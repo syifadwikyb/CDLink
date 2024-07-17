@@ -19,6 +19,10 @@ class PreviewController extends Controller
             'aboutPreview' => 'required|string',
             'socialButtons' => 'nullable|array',
             'linkButtons' => 'nullable|array',
+            'socialButtons.*.url' => 'nullable|string',
+            'socialButtons.*.icon' => 'nullable|string',
+            'linkButtons.*.text' => 'nullable|string',
+            'linkButtons.*.url' => 'nullable|string',
         ]);
 
         $bannerPath = $request->file('banner')->store('uploads', 'public');
@@ -37,7 +41,8 @@ class PreviewController extends Controller
                 Button::create([
                     'preview_id' => $preview->id,
                     'type' => 'social',
-                    'url' => $socialButton,
+                    'text' => $socialButton['icon'],
+                    'url' => $socialButton['url'],
                 ]);
             }
         }
@@ -56,4 +61,3 @@ class PreviewController extends Controller
         return redirect()->back()->with('success', 'Previews saved successfully!');
     }
 }
-
