@@ -13,11 +13,11 @@ class LoginController extends Controller
     // Menampilkan halaman login
     public function index()
     {
-        return view("/signin");
+        return view("auth.login");
     }
 
     // Proses login
-    public function signin_proses(Request $request)
+    public function login_proses(Request $request)
     {
         // Validasi input
         $request->validate([
@@ -37,22 +37,20 @@ class LoginController extends Controller
                 setcookie("email","");
                 setcookie("password","");
             }
-
-
             return redirect()->route('coba');  // Masuk ke dashboard ketika berhasil login
         } else {
-            return redirect()->route('sign-in')->with('failed', 'Email atau Password Salah');
+            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
     }
 
-    // Menampilkan halaman signup
-    public function signup()
+    // Menampilkan halaman register
+    public function register()
     {
-        return view('/signup');
+        return view('auth.register');
     }
 
-    // Proses signup
-    public function signup_proses(Request $request)
+    // Proses register
+    public function register_proses(Request $request)
     {
         // Validasi input
         $request->validate([
@@ -75,17 +73,17 @@ class LoginController extends Controller
             'password'  => $request->password
         ];
 
-        // Mencoba untuk login setelah signup
+        // Mencoba untuk login setelah register
         if (Auth::attempt($credentials)) {
             return redirect()->route('coba');  // Masuk ke dashboard ketika berhasil login
         } else {
-            return redirect()->route('sign-in')->with('failed', 'Email atau Password Salah');
+            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
     }
 
-    public function signout(){
+    public function logout(){
         Auth::logout();
-        return redirect()->route('sign-in')->with('success', 'Kamu berhasil logout');
+        return redirect()->route('login')->with('success', 'Kamu berhasil logout');
     }
 
     public function coba()

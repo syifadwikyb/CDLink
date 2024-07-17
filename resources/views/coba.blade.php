@@ -12,8 +12,8 @@
     <title>Selamat Datang</title>
 </head>
 <body class="bg-white font-montserrat">
-    <div class="container mx-auto">
-        <div class="header sticky z-20 top-0 flex justify-between items-center p-8 bg-slate-100 transition-all duration-300">
+    <div class="header sticky h-auto top-0 z-50 w-auto bg-white transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center p-8">
             <div>
                 <p>Logo</p>
             </div>
@@ -22,19 +22,20 @@
                 <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-light rounded-lg shadow-lg z-10">
                     <a href="#" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Profile</a>
                     <a href="{{ route('changepass') }}" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Settings</a>
-                    <a href="{{ route('signout') }}" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Logout</a>
+                    <a href="{{ route('logout') }}" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Logout</a>
                 </div>
             </div>
         </div>
-        <div class="flex mt-3">
+    </div>
+        <div class="container mx-auto flex mt-3">
             <x-customizationBox class="flex-1"></x-customizationBox>
             <div class="ml-10">
                 <x-previewBox></x-previewBox>
             </div>            
         </div>
-    </div>
     <x-footer></x-footer>
     @vite('resources/js/dropdown.js')
+    @vite('resources/js/header.js')
 </body>
 </html>
 

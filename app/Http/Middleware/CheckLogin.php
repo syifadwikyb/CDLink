@@ -18,7 +18,7 @@ class CheckLogin
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::check()) {
-            return redirect()->route('signin')->with('message', 'Anda harus login terlebih dahulu.');
+            return redirect()->route('login')->with('message', 'Anda harus login terlebih dahulu.');
         }
 
         return $next($request);

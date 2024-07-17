@@ -9,6 +9,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="font-montserrat">
+    <x-header></x-header>
     <x-layout></x-layout>
     <x-footer class="absolute bottom-0"></x-footer>
 </body>

@@ -1,29 +1,7 @@
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <div class="container mx-auto">
-  <div class="header sticky z-20 top-0 flex justify-between items-center p-8 bg-transparent transition-all duration-300">
-    <div>
-      <p>Logo</p>
-      {{-- <img src="{{ asset('asset/logo.svg') }}" alt=""> --}}
-    </div>
-    <div class="relative">
-      <div class="hidden md:flex">  
-        <a href="#template"><button class="rounded-3xl ml-1 px-4 sm:px-8 lg:px-10 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">Template</button></a>
-        <a href="#aboutme"><button class="rounded-3xl ml-1 px-4 sm:px-8 lg:px-10 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">About me</button></a>
-        <a href="/sign-in"><button class="rounded-3xl ml-1 px-4 sm:px-8 lg:px-10 py-3 font-bold text-purple hover:text-light hover:bg-customgradient3">Sign in</button></a>
-        <a href="/sign-up"><button class="rounded-3xl ml-1 px-4 sm:px-8 lg:px-10 py-3 font-bold text-light bg-customgradient3">Sign up</button></a>
-      </div>
-      <div class="flex md:hidden md:space-x-4">
-        <button id="bars-icon" class="fas fa-solid fa-bars text-2xl text-purple"></button>          
-        <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg">
-          <a href="/sign-up"><button class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Sign up</button></a>
-          <a href="/sign-in"><button class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Sign in</button></a>
-          <a href="#aboutme"><button class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">About me</button></a>
-          <a href="#template"><button class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Template</button></a>
-        </div>
-      </div>
-    </div>    
-  </div>
   <div class="px-10 lg:px-0">
-    <div class="relative rounded-3xl bg-customgradient2">
+    <div data-aos="zoom-in" class="relative rounded-3xl bg-customgradient2">
       <div class="hero pl-4 flex flex-col items-center justify-between sm:pl-10 lg:flex-row-reverse ">
         <div class="image z-10 mb-6 w-full lg:w-auto lg:mb-0 lg:ml-6">
           <img src="{{ asset('asset/man.png') }}" alt="" class="w-full lg:max-w-none lg:w-auto object-cover" style="max-width:600px;">
@@ -32,13 +10,13 @@
           <h1 class="mb-3 font-bold text-3xl sm:text-4xl lg:text-5xl leading-normal">Ekspresikan Kreativitasmu dalam <span class="text-purple">Website</span> yang Memukau!</h1>
           <p class="mb-8 text-xl sm:text-2xl lg:text-3xl">Ekspresikan Kreativitasmu dalam Website yang Memukau!</p>
           <div class="md:pb-5 lg:pb-0 pb-5">
-            <a href="/sign-up"><button class="rounded-xl px-8 sm:px-12 py-4 text-light bg-customgradient3">Get started for free</button></a>
+            <a href="/register"><button class="rounded-xl px-8 sm:px-12 py-4 text-light bg-customgradient3">Get started for free</button></a>
           </div>  
         </div>
       </div>
     </div>
     <p class="pt-16" id="aboutme"></p>
-    <div class="tentang mt-10 flex flex-col items-center lg:flex-row lg:text-center">
+    <div data-aos="zoom-in" class="tentang mt-10 flex flex-col items-center lg:flex-row lg:text-center">
       <img src="{{ asset('asset/tentang.svg') }}" class="w-full hidden lg:w-1/2 lg:flex" alt="">
       <div class="text-black -ml-0 pr-5 mt-6 text-center lg:-ml-36 lg:mt-0 lg:text-left">
           <h1 class="font-bold pb-4 text-3xl lg:text-4xl">Tentang Kami</h1>
@@ -46,12 +24,12 @@
       </div>
     </div>
     <p class="pt-20" id="template"></p>
-    <div class="text-center pb-5">
+    <div data-aos="zoom-in" class="text-center pb-5">
         <h1 class="font-bold mt-10 pb-4 text-3xl lg:text-4xl">The Best Creators Use Lynk.id</h1>
         <p class="text-lg lg:text-xl">See how our creators use Stan to superpower their businesses!</p>
     </div>
     {{-- Slider --}}
-    <div class="flex justify-center max-h-screen">
+    <div data-aos="zoom-in" class="flex justify-center max-h-screen">
       <div class="relative w-full sm:w-4/5 max-w-7xl">
         <div class="overflow-hidden"> <!-- Kontainer slider dengan overflow hidden -->
           <div class="flex mx-auto transition-transform duration-500 ease-in-out" id="slider-track"> <!-- Track slider dengan transisi -->
@@ -84,6 +62,9 @@
   </div>
 </div> 
     
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 @vite('resources/js/dropdown.js')
 @vite('resources/js/slider.js')
-@vite('resources/js/header.js')
