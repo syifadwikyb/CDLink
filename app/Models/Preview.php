@@ -1,5 +1,4 @@
 <?php
-// app/Models/Preview.php
 
 namespace App\Models;
 
@@ -29,5 +28,3 @@ class Preview extends Model
         return $this->hasMany(Button::class);
     }
 }
-
-

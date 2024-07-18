@@ -1,5 +1,5 @@
 <?php
-// app/Models/Button.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,4 +21,3 @@ class Button extends Model
         return $this->belongsTo(Preview::class);
     }
 }
-
