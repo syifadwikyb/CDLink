@@ -11,35 +11,34 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-light font-montserrat">
+<body class="bg-white dark:bg-slate-900 font-montserrat h-screen">
     <div class="header sticky h-auto top-0 z-50 w-auto bg-white transition-all duration-300">
         <div class="container mx-auto flex justify-between items-center p-8">
-            <div class="text-dark">
+            <div class="text-dark dark:text-white">
                 <p>Logo</p>
             </div>
             <div class="relative">
                 <div class="hidden md:flex space-x-4">
                     <a href="/login"><button
-                            class="rounded-3xl font-bold px-12 py-3 bg-customgradient2 text-light ">Login</button></a>
+                            class="rounded-3xl font-bold px-12 shadow-xl py-3 bg-purple dark:bg-orange-500 text-white">Login</button></a>
                     <a href="/register"><button
-                            class="rounded-3xl font-bold px-12 py-3 text-purple hover:bg-customgradient2 hover:text-light">Register</button></a>
+                            class="rounded-3xl font-bold px-12 py-3 text-purple hover:shadow-xl hover:text-white hover:bg-purple dark:hover:bg-orange-500 dark:text-white">Register</button></a>
                 </div>
                 <div class="flex md:hidden md:space-x-4">
-                    <button id="bars-icon" class="fas fa-solid fa-bars text-2xl text-purple"></button>
-                    <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 rounded-lg shadow-lg">
+                    <button id="bars-icon" class="fas fa-solid fa-bars text-2xl text-purple dark:text-white"></button>
+                    <div id="dropdown-menu" class="hidden absolute right-0 mt-10 w-48 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-lg">
                         <a href="/login"><button
-                                class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Login</button></a>
+                                class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple dark:hover:bg-orange-500 dark:hover:text-white dark:text-white">Login</button></a>
                         <a href="/register"><button
-                                class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple">Sign
-                                up</button></a>
+                                class="flex rounded-lg py-2 w-full justify-center font-bold text-purple hover:text-white hover:bg-purple dark:hover:bg-orange-500 dark:hover:text-white dark:text-white">Register</button></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div data-aos="flip-right" data-aos-duration="1000" class="container mx-auto"> 
-        <div class="flex items-center justify-center h-screen">
-            <form class="lg:p-16 md:p-10 sm:p-10 p-5 shadow-2xl rounded-xl bg-customgradient2"
+        <div class="flex items-center justify-center my-auto">
+            <form class="lg:p-16 md:p-10 sm:p-10 p-5 shadow-2xl rounded-xl bg-customgradient3 dark:bg-customgradient1"
                 action="{{ route('login-proses') }}" method="post">
                 @csrf
                 <h1 class="lg:text-5xl text-4xl font-bold font-montserrat leading-6 text-center text-white mb-5">Login
@@ -52,13 +51,13 @@
                     <div class="mt-2">
                         <div class="flex shadow-sm">
                             <input type="email" name="email" id="email" autocomplete="email"
-                                class="rounded-xl flex-1 bg-light py-3 px-5 text-dark font-semibold placeholder:text-gray focus:outline-none sm:text-base sm:leading-6"
+                                class="rounded-xl flex-1 bg-white py-3 px-5 text-dark font-semibold placeholder:text-abu focus:outline-none sm:text-base sm:leading-6"
                                 @if (@isset($_COOKIE['email'])) value="{{ $_COOKIE['email'] }}" @endif
                                 placeholder="Masukkan email">
                         </div>
                     </div>
                     @error('email')
-                        <small>{{ $message }}</small>
+                        <small class="text-rose-500">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="sm:col-span-4">
@@ -67,32 +66,34 @@
                     <div class="mt-2">
                         <div class="flex shadow-sm">
                             <input type="password" name="password" id="password" autocomplete="password"
-                                class="rounded-l-xl flex-1 bg-light py-3 px-5 text-dark font-semibold placeholder:text-gray focus:outline-none sm:text-base sm:leading-6"
+                                class="rounded-l-xl flex-1 bg-white py-3 px-5 text-dark font-semibold placeholder:text-abu focus:outline-none sm:text-base sm:leading-6"
                                 @if (@isset($_COOKIE['password'])) value="{{ $_COOKIE['password'] }}" @endif
                                 placeholder="Masukkan password">
-                            <span class="icon-eye cursor-pointer py-3 px-5 rounded-r-xl bg-light text-dark"
+                            <span class="icon-eye cursor-pointer py-3 px-5 rounded-r-xl bg-white text-dark"
                                 onclick="togglePasswordVisibility()">
                                 <i class="fas fa-eye"></i>
                             </span>
                         </div>
                     </div>
                     @error('password')
-                        <small>{{ $message }}</small>
+                        <small class="text-rose-500">{{ $message }}</small>
                     @enderror
                 </div>
-                <div class="py-5">
+                <div class="py-5 items-center">
                     <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember me</label>
+                    <label for="remember" class="pl-2 font-semibold text-sm text-white hover:underline">Remember me</label>
                 </div>
-                <button
-                    class="bg-light font-bold text-center py-3 px-5 rounded-xl w-full text-dark hover:bg-dark-purple hover:text-light hover:bg-dark">Login</button>
+                <button class="bg-white font-bold text-center py-3 px-5 w-full text-purple rounded-xl hover:text-white hover:bg-customgradient3 dark:text-dark dark:hover:bg-none">
+                    Login
+                </button>             
             </form>
         </div>
     </div>
 </body>
 
+<x-darkmode></x-darkmode>
 @vite('resources/js/dropdown.js')
-@vite('resources/js/eye_signup.js')
+@vite('resources/js/eye.js')
 @vite('resources/js/header.js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
