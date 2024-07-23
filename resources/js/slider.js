@@ -28,8 +28,8 @@ function moveToSlide(index, noTransition = false) {
 function updateDots() {
     const actualIndex = (currentIndex - slidesToShow + slides.length) % slides.length; // Hitung indeks slide sebenarnya
     dots.forEach((dot, idx) => {
-        dot.classList.toggle('bg-orange-500', idx === actualIndex); // Set warna abu-abu gelap untuk dot aktif
-        dot.classList.toggle('bg-white', idx !== actualIndex); // Set warna abu-abu terang untuk dot tidak aktif
+        dot.classList.toggle('bg-orange-600', idx === actualIndex); // Set warna abu-abu gelap untuk dot aktif
+        dot.classList.toggle('bg-slate-300', idx !== actualIndex); // Set warna abu-abu terang untuk dot tidak aktif
     });
 }
 

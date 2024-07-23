@@ -39,6 +39,30 @@ function handleScroll() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const barsIcon = document.getElementById('bars-icon');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    if (!barsIcon || !dropdownMenu) {
+        console.error('Element not found');
+        return;
+    }
+
+    barsIcon.addEventListener('click', function () {
+
+        // Jika dropdown tidak tersembunyi, ubah ikon menjadi 'fa-times', jika tidak, kembalikan ke 'fa-bars'
+        if (!dropdownMenu.classList.contains('hidden')) {
+            barsIcon.classList.remove('fa-bars');
+            barsIcon.classList.add('fa-times');
+        } else {
+            barsIcon.classList.remove('fa-times');
+            barsIcon.classList.add('fa-bars');
+        }
+    });
+});
+
+
+
 // Event listener untuk scroll
 window.addEventListener('scroll', handleScroll); // Menambahkan event listener untuk scroll yang memanggil fungsi handleScroll
 

@@ -20,9 +20,9 @@
             <div class="relative">
                 <button id="bars-icon" class="fas fa-user-circle text-5xl focus:outline-none"></button>
                 <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-light dark:bg-slate-700 rounded-lg shadow-lg z-10">
-                    <a href="#" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple dark:text-white hover:text-white hover:bg-purple">Profile</a>
-                    <a href="{{ route('changepass') }}" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple dark:text-white hover:text-white hover:bg-purple">Settings</a>
-                    <a href="{{ route('logout') }}" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple dark:text-white hover:text-white hover:bg-purple">Logout</a>
+                    <a href="#" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple dark:text-white hover:text-white hover:bg-purple dark:hover:bg-orange-500">Profile</a>
+                    <a href="{{ route('changepass') }}" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple dark:text-white hover:text-white hover:bg-purple dark:hover:bg-orange-500">Change Password</a>
+                    <a href="{{ route('logout') }}" class="flex rounded-lg py-2 w-full justify-center font-bold text-purple dark:text-white hover:text-white hover:bg-purple dark:hover:bg-orange-500">Logout</a>
                 </div>
             </div>
         </div>
