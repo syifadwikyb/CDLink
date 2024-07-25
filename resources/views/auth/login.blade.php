@@ -69,7 +69,7 @@
                                 class="rounded-l-xl flex-1 bg-white py-3 px-5 text-dark font-semibold placeholder:text-abu focus:outline-none sm:text-base sm:leading-6"
                                 @if (@isset($_COOKIE['password'])) value="{{ $_COOKIE['password'] }}" @endif
                                 placeholder="Masukkan password">
-                            <span class="icon-eye cursor-pointer py-3 px-5 rounded-r-xl bg-white text-dark"
+                            <span class="icon-eye cursor-pointer py-3 px-5 rounded-r-xl bg-white text-purple dark:text-orange-500"
                                 onclick="togglePasswordVisibility()">
                                 <i class="fas fa-eye"></i>
                             </span>
@@ -83,7 +83,7 @@
                     <input type="checkbox" id="remember" name="remember">
                     <label for="remember" class="pl-2 font-semibold text-sm text-white hover:underline">Remember me</label>
                 </div>
-                <button class="bg-white font-bold text-center py-3 px-5 w-full text-purple rounded-xl hover:text-white hover:bg-customgradient3 dark:text-dark dark:hover:bg-none">
+                <button class="bg-light font-bold text-center py-3 px-5 w-full text-purple rounded-xl hover:bg-white dark:text-dark dark:hover:bg-orange-500">
                     Login
                 </button>             
             </form>

@@ -56,7 +56,7 @@
                         @enderror
                     </div>
                 </div>
-                <button class="bg-light font-bold text-center py-3 mt-3 rounded-xl w-full text-purple dark:text-black hover:text-light lg:text-base text-sm dark:hover:bg-orange-500">Change Password</button>
+                <button class="bg-light font-bold text-center py-3 mt-3 rounded-xl w-full text-purple dark:text-black hover:bg-white lg:text-base text-sm dark:hover:bg-orange-500">Change Password</button>
                 <div class="text-left mt-3"><button class="font-bold lg:text-base text-sm text-black py-2 px-5 rounded-xl bg-white dark:hover:bg-orange-500"><a href="{{ route('coba') }}">Kembali</a></button></div>
             </form>
         </div>

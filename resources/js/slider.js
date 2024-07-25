@@ -1,79 +1,51 @@
-const track = document.getElementById('slider-track'); // Elemen track slider
-const slides = Array.from(track.children); // Array dari slide
-const nextButton = document.getElementById('next'); // Tombol next
-const prevButton = document.getElementById('prev'); // Tombol prev
-const dots = document.querySelectorAll('.dot'); // Indikator slide
+const track = document.getElementById('slider-track');
+const slides = Array.from(track.children);
+let slideWidth;
 
-const slidesToShow = 3; // Jumlah slide yang ditampilkan
-const slideWidth = track.offsetWidth / slidesToShow; // Lebar setiap slide
-let currentIndex = slidesToShow; // Indeks slide saat ini (dimulai dari duplikat pertama)
-
-// Duplikasi slide untuk efek loop tak terbatas
-const firstSlides = slides.slice(0, slidesToShow).map(slide => slide.cloneNode(true));
-const lastSlides = slides.slice(-slidesToShow).map(slide => slide.cloneNode(true));
-firstSlides.forEach(slide => track.appendChild(slide));
-lastSlides.forEach(slide => track.insertBefore(slide, slides[0]));
-
-function moveToSlide(index, noTransition = false) {
-    if (noTransition) {
-        track.style.transition = 'none'; // Hapus transisi jika noTransition adalah true
+function setSlidesToShow() {
+    const width = window.innerWidth;
+    if (width >= 1024) {
+        slideWidth = track.offsetWidth / 4;
+    } else if (width >= 768) {
+        slideWidth = track.offsetWidth / 2;
     } else {
-        track.style.transition = 'transform 0.5s ease-in-out'; // Tambahkan transisi
+        slideWidth = track.offsetWidth / 1;
     }
-    track.style.transform = `translateX(-${index * slideWidth}px)`; // Pindahkan track
-    currentIndex = index; // Update indeks slide saat ini
-    updateDots(); // Update indikator
-}
-
-function updateDots() {
-    const actualIndex = (currentIndex - slidesToShow + slides.length) % slides.length; // Hitung indeks slide sebenarnya
-    dots.forEach((dot, idx) => {
-        dot.classList.toggle('bg-orange-600', idx === actualIndex); // Set warna abu-abu gelap untuk dot aktif
-        dot.classList.toggle('bg-slate-300', idx !== actualIndex); // Set warna abu-abu terang untuk dot tidak aktif
+    slides.forEach(slide => {
+        slide.style.minWidth = `${slideWidth}px`;
     });
 }
 
-function nextSlide() {
-    if (currentIndex < slides.length + slidesToShow) {
-        moveToSlide(currentIndex + 1); // Geser ke slide berikutnya
-    }
+function startAutoSlide() {
+    track.style.transition = 'transform 0.5s linear';
+    track.style.transform = `translateX(-${slideWidth}px)`;
+    setTimeout(() => {
+        track.appendChild(track.firstElementChild);
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0)';
+        setTimeout(startAutoSlide, 50);
+    }, 3000);
 }
 
-function prevSlide() {
-    if (currentIndex > 0) {
-        moveToSlide(currentIndex - 1); // Geser ke slide sebelumnya
-    }
-}
+setSlidesToShow();
+startAutoSlide();
 
-nextButton.addEventListener('click', () => {
-    nextSlide();
-    if (currentIndex === slides.length + slidesToShow) {
-        setTimeout(() => moveToSlide(slidesToShow, true), 500); // Pindah ke slide pertama tanpa transisi
-    }
+window.addEventListener('resize', () => {
+    setSlidesToShow();
 });
 
-prevButton.addEventListener('click', () => {
-    prevSlide();
-    if (currentIndex === 0) {
-        setTimeout(() => moveToSlide(slides.length, true), 500); // Pindah ke slide terakhir tanpa transisi
-    }
-});
-
-setInterval(() => {
-    nextSlide();
-    if (currentIndex === slides.length + slidesToShow) {
-        setTimeout(() => moveToSlide(slidesToShow, true), 500); // Pindah ke slide pertama tanpa transisi
-    }
-}, 3000); // Slide otomatis setiap 3 detik
-
-// Variabel untuk drag/swipe
+// Drag functionality
 let startPos = 0;
 let currentTranslate = 0;
 let prevTranslate = 0;
 let animationID;
 let dragging = false;
 
-// Event Listener untuk drag/swipe dengan mouse
+function animation() {
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    if (dragging) requestAnimationFrame(animation);
+}
+
 track.addEventListener('mousedown', (e) => {
     startPos = e.pageX;
     dragging = true;
@@ -85,15 +57,16 @@ window.addEventListener('mouseup', () => {
     cancelAnimationFrame(animationID);
     if (dragging) {
         const movedBy = currentTranslate - prevTranslate;
-        if (movedBy < -100 && currentIndex < slides.length + slidesToShow) {
-            nextSlide();
-        } else if (movedBy > 100 && currentIndex > 0) {
-            prevSlide();
-        } else {
-            moveToSlide(currentIndex);
+        if (movedBy < -100 && slides.length > 0) {
+            slides.push(slides.shift());
+        } else if (movedBy > 100 && slides.length > 0) {
+            slides.unshift(slides.pop());
         }
-        prevTranslate = currentTranslate; // Perbarui posisi translate sebelumnya
+        currentTranslate = 0;
+        prevTranslate = 0;
         dragging = false;
+        track.style.transition = 'transform 0.5s linear';
+        track.style.transform = 'translateX(0)';
     }
 });
 
@@ -105,7 +78,6 @@ window.addEventListener('mousemove', (e) => {
     }
 });
 
-// Event Listener untuk swipe dengan touch
 track.addEventListener('touchstart', (e) => {
     startPos = e.touches[0].clientX;
     dragging = true;
@@ -117,15 +89,16 @@ window.addEventListener('touchend', () => {
     cancelAnimationFrame(animationID);
     if (dragging) {
         const movedBy = currentTranslate - prevTranslate;
-        if (movedBy < -100 && currentIndex < slides.length + slidesToShow) {
-            nextSlide();
-        } else if (movedBy > 100 && currentIndex > 0) {
-            prevSlide();
-        } else {
-            moveToSlide(currentIndex);
+        if (movedBy < -100 && slides.length > 0) {
+            slides.push(slides.shift());
+        } else if (movedBy > 100 && slides.length > 0) {
+            slides.unshift(slides.pop());
         }
-        prevTranslate = currentTranslate; // Perbarui posisi translate sebelumnya
+        currentTranslate = 0;
+        prevTranslate = 0;
         dragging = false;
+        track.style.transition = 'transform 0.5s linear';
+        track.style.transform = 'translateX(0)';
     }
 });
 
@@ -136,8 +109,3 @@ window.addEventListener('touchmove', (e) => {
         track.style.transform = `translateX(${currentTranslate}px)`;
     }
 });
-
-function animation() {
-    track.style.transform = `translateX(${currentTranslate}px)`;
-    if (dragging) requestAnimationFrame(animation);
-}

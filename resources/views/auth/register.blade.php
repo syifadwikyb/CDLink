@@ -20,9 +20,9 @@
             <div class="relative">
                 <div class="hidden md:flex space-x-4">
                     <a href="/login"><button
-                            class="rounded-3xl font-bold px-12 py-3 text-purple dark:text-white hover:bg-customgradient3 hover:shadow-xl hover:text-light">Login</button></a>
+                            class="rounded-3xl font-bold px-12 py-3 text-purple dark:text-white hover:bg-purple dark:hover:bg-orange-500 hover:shadow-xl hover:text-light">Login</button></a>
                     <a href="/register"><button
-                            class="rounded-3xl font-bold px-12 py-3 bg-customgradient3 text-light shadow-xl">Register</button></a>
+                            class="rounded-3xl font-bold px-12 py-3 bg-purple dark:bg-orange-500 text-light shadow-xl">Register</button></a>
                 </div>
                 <div class="flex md:hidden md:space-x-4">
                     <button id="bars-icon" class="fas fa-solid fa-bars text-2xl text-purple dark:text-white"></button>
@@ -79,7 +79,7 @@
                             <input type="password" name="password" id="password" autocomplete="password"
                                 class="rounded-l-xl flex-1 bg-light py-3 px-5 text-dark font-semibold placeholder:text-abu focus:outline-none sm:text-base sm:leading-6 dark:bg-white dark:text-dark"
                                 placeholder="Masukkan password">
-                            <span class="icon-eye cursor-pointer py-3 px-5 rounded-r-xl bg-light text-purple dark:text-dark dark:bg-white">
+                            <span class="icon-eye cursor-pointer py-3 px-5 rounded-r-xl bg-light text-purple dark:text-orange-500 dark:bg-white">
                                 <i class="fas fa-eye"></i>
                             </span>
                         </div>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <button
-                    class="bg-light font-bold text-center py-3 mt-8 px-5 rounded-xl w-full text-purple dark:text-dark">Register</button>
+                    class="bg-light font-bold text-center py-3 mt-8 px-5 rounded-xl w-full hover:g-white text-purple dark:text-dark dark:hover:bg-orange-500">Register</button>
             </form>
         </div>
     </div>
