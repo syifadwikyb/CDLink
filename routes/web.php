@@ -8,16 +8,16 @@ Route::get('/', function () {
 });
 
 
-// SIGNIN
-Route::get('/sign-in', [LoginController::class, 'index'])->name('sign-in');
-Route::post('/sign-in-proses', [LoginController::class, 'signin_proses'])->name('sign-in-proses');
+// login
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
 
 // SIGNOUT
-Route::get('/signout', [LoginController::class, 'signout'])->name('signout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// SIGNUP
-Route::get('/sign-up', [LoginController::class, 'signup'])->name('sign-up');
-Route::post('/sign-up-proses', [LoginController::class, 'signup_proses'])->name('sign-up-proses');
+// register
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/register-proses', [LoginController::class, 'register_proses'])->name('register-proses');
 
 // Middleware protected route
 Route::get('/coba', [LoginController::class, 'coba'])->middleware('auth')->name('coba');
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
 });
 
 // Contoh controller login
-Route::post('/signin', 'LoginController@login')->name('signin');
+Route::post('/login', 'LoginController@login')->name('login');
 
 // Change Password
 Route::get('/changepass', [LoginController::class, 'changepass'])->name('changepass');

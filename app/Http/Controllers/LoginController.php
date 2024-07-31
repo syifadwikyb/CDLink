@@ -13,11 +13,11 @@ class LoginController extends Controller
     // Menampilkan halaman login
     public function index()
     {
-        return view("components/signin");
+        return view("auth.login");
     }
 
     // Proses login
-    public function signin_proses(Request $request)
+    public function login_proses(Request $request)
     {
         // Validasi input
         $request->validate([
@@ -37,22 +37,20 @@ class LoginController extends Controller
                 setcookie("email","");
                 setcookie("password","");
             }
-
-
             return redirect()->route('coba');  // Masuk ke dashboard ketika berhasil login
         } else {
-            return redirect()->route('sign-in')->with('failed', 'Email atau Password Salah');
+            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
     }
 
-    // Menampilkan halaman signup
-    public function signup()
+    // Menampilkan halaman register
+    public function register()
     {
-        return view('components/signup');
+        return view('auth.register');
     }
 
-    // Proses signup
-    public function signup_proses(Request $request)
+    // Proses register
+    public function register_proses(Request $request)
     {
         // Validasi input
         $request->validate([
@@ -75,17 +73,17 @@ class LoginController extends Controller
             'password'  => $request->password
         ];
 
-        // Mencoba untuk login setelah signup
+        // Mencoba untuk login setelah register
         if (Auth::attempt($credentials)) {
             return redirect()->route('coba');  // Masuk ke dashboard ketika berhasil login
         } else {
-            return redirect()->route('sign-in')->with('failed', 'Email atau Password Salah');
+            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
     }
 
-    public function signout(){
+    public function logout(){
         Auth::logout();
-        return redirect()->route('sign-in')->with('success', 'Kamu berhasil logout');
+        return redirect()->route('login')->with('success', 'Kamu berhasil logout');
     }
 
     public function coba()
@@ -102,31 +100,39 @@ class LoginController extends Controller
     return view('changepass');
 }
 
-    public function changepass_proses(Request $request)
-    {
-        $request->validate([
-            'oldpassword' => 'required',
-            'newpassword' => 'required|min:8',
-            'confirmpassword' => 'required|same:newpassword|min:8',
-        ]);
+public function changepass_proses(Request $request)
+{
+    // Validasi input dengan pesan kustom
+    $request->validate([
+        'oldpassword' => 'required',
+        'newpassword' => 'required|min:8',
+        'confirmpassword' => 'required|same:newpassword|min:8',
+    ], [
+        'oldpassword.required' => 'Password lama harus terisi',
+        'newpassword.required' => 'Password baru harus terisi',
+        'newpassword.min' => 'Password baru harus memiliki minimal 8 karakter',
+        'confirmpassword.required' => 'Konfirmasi password harus terisi',
+        'confirmpassword.same' => 'Konfirmasi password harus sama dengan password baru',
+        'confirmpassword.min' => 'Konfirmasi password harus memiliki minimal 8 karakter',
+    ]);
 
-        $oldpassword = $request->oldpassword;
-        $newpassword = $request->newpassword;
+    $oldpassword = $request->oldpassword;
+    $newpassword = $request->newpassword;
 
-        $id = Auth::id(); // Mengambil ID pengguna yang sedang login
-        $user = User::findOrFail($id);
+    $id = Auth::id(); // Mengambil ID pengguna yang sedang login
+    $user = User::findOrFail($id);
 
-        if (Hash::check($oldpassword, $user->password)) {
-            $user->password = bcrypt($newpassword);
-
-            try {
-                $user->save();
-                return redirect()->route('changepass')->with('success', 'Selamat anda berhasil ubah password');
-            } catch (\Exception $e) {
-                return redirect()->route('changepass')->with('failed', 'Anda gagal mengubah password');
-            }
-        } else {
-            return redirect()->route('changepass')->with('failed', 'Anda salah memasukkan password lama');
+    if (Hash::check($oldpassword, $user->password)) {
+        $user->password = bcrypt($newpassword);
+        try {
+            $user->save();
+            return redirect()->route('changepass')->with('success', 'Selamat anda berhasil ubah password');
+        } catch (\Exception $e) {
+            return redirect()->route('changepass')->with('failed', 'Anda gagal mengubah password');
         }
+    } else {
+        return redirect()->route('changepass')->with('failed', 'Anda salah memasukkan password lama');
     }
+}
+
 }
