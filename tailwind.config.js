@@ -11,6 +11,9 @@ export default {
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
       },
+      gridTemplateColumns: {
+        'cb': 'repeat(16, minmax(0, 1fr))', // 4 columns
+      },
       colors:{
         'purple': '#AF379F',
         'purple-opacity': 'rgba(108, 1, 95, 0.3)',
@@ -25,10 +28,7 @@ export default {
         'customgradient1': 'linear-gradient(75deg, #310063 0%, #6400C9 100%)',
         'customgradient2': 'linear-gradient(75deg, #97CDF2 0%, #7C47C8 100%)',
         'customgradient3': 'linear-gradient(90deg, #8D42B1 0%, #B3369D 100%)',
-      },
-      backgroundRepeat: {
-        'no-repeat': 'no-repeat',
-      },
+      },      
     },
   },
   plugins: [],
